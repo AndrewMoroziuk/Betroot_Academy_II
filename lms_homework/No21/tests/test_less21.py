@@ -1,7 +1,5 @@
 import os
 
-import pytest
-
 from lms_homework.No21.lesson_21 import File
 
 

@@ -13,7 +13,9 @@ class File:
             os.path.isfile(self.name) and self.method in "r"
         ):
             File.COUNTER += 1
-            log_file = open("D:/Beetroot Academy II/lms_homework/No21/log_info/log.txt", "a")
+            log_file = open(
+                "D:/Beetroot Academy II/lms_homework/No21/log_info/log.txt", "a"
+            )
             log_file.write(f"> Create file No{File.COUNTER}\n")
             log_file.close()
             self.file = open(self.name, self.method)
@@ -22,7 +24,9 @@ class File:
 
     def __exit__(self, types, value, traceback):
         self.no_error_file = File.COUNTER + 1
-        log_file = open("D:/Beetroot Academy II/lms_homework/No21/log_info/log.txt", "a")
+        log_file = open(
+            "D:/Beetroot Academy II/lms_homework/No21/log_info/log.txt", "a"
+        )
         log_file.write(f"> Error of create file No {self.no_error_file}")
         log_file.write(f" '{self.name}'\n")
         log_file.write(f"   Type error: {types},  Value: {value}\n")
