@@ -10,7 +10,7 @@ class File:
 
     def __enter__(self):
         if self.method in ("w", "a") or (
-            os.path.isfile(self.name) and self.method in "r"
+            os.path.isfile(self.name) and self.method == "r"
         ):
             File.COUNTER += 1
             log_file = open(
@@ -23,11 +23,11 @@ class File:
         raise TypeError("Wrong params")
 
     def __exit__(self, types, value, traceback):
-        self.no_error_file = File.COUNTER + 1
+        self.error_file_num = File.COUNTER + 1
         log_file = open(
             "D:/Beetroot Academy II/lms_homework/No21/log_info/log.txt", "a"
         )
-        log_file.write(f"> Error of create file No {self.no_error_file}")
+        log_file.write(f"> Error of create file No {self.error_file_num}")
         log_file.write(f" '{self.name}'\n")
         log_file.write(f"   Type error: {types},  Value: {value}\n")
         self.file.close()
